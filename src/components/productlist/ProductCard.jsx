@@ -44,9 +44,10 @@ function ProductCard({ product }) {
 
       {!inCart ? (
         <button
-          onClick={() =>
-            dispatch(addItem({ id: product.id, product, quantity: 1 }))
-          }
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(addItem({ id: product.id, product, quantity: 1 }));
+          }}
           className="
             w-full bg-black text-white py-2 rounded-lg 
             font-semibold text-sm hover:bg-gray-800 
@@ -63,7 +64,10 @@ function ProductCard({ product }) {
           "
         >
           <button
-            onClick={() => dispatch(decrease(product.id))}
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch(decrease(product.id));
+            }}
             className="
               w-7 h-7 text-white bg-black rounded-full 
               flex items-center justify-center text-lg 
@@ -76,7 +80,10 @@ function ProductCard({ product }) {
           <span className="text-base font-semibold">{inCart.qty}</span>
 
           <button
-            onClick={() => dispatch(increase(product.id))}
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch(increase(product.id));
+            }}
             className="
               w-7 h-7 text-white bg-black rounded-full 
               flex items-center justify-center text-lg 
