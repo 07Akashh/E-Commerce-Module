@@ -1,70 +1,229 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 🛍️ E-Commerce Module — Assignment (FakeStore API)
 
-In the project directory, you can run:
+This project is a small, fully functional **e-commerce module** built using **React**, **Redux Toolkit**, and the **FakeStore API**.
+It includes product listing, product details, cart management, filters, loading states, and clean UI following modern React standards.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🔗 Live API Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**FakeStore API:**
+[https://fakestoreapi.com/](https://fakestoreapi.com/)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 📚 Features Implemented
 
-### `npm run build`
+Below is the list of assignment requirements and how the project fulfills each one.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# ✅ 1. Fetch Products
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+✔ Fetched all products using:
 
-### `npm run eject`
+```
+GET https://fakestoreapi.com/products
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+✔ Displayed each product with:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Image
+* Title
+* Price
+* Category
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+✔ Store products inside **Redux Toolkit** for global availability.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+✔ Implemented loading skeleton while products are being fetched.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# ✅ 2. Product Details Page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+✔ On clicking a product, user is navigated to:
 
-### Code Splitting
+```
+/product/:id
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+✔ Fetched full product details from:
 
-### Analyzing the Bundle Size
+```
+GET https://fakestoreapi.com/products/:id
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+✔ Displayed:
 
-### Making a Progressive Web App
+* Title
+* Description
+* Image
+* Price
+* Category
+* Rating (rate + count)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+✔ Added a professional, clean UI with animations.
 
-### Advanced Configuration
+✔ Showed **related products** based on matching category (excluding current product ID).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+✔ Added skeleton UI when the store was still loading.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# ✅ 3. State Management (Redux Toolkit)
 
-### `npm run build` fails to minify
+✔ Implemented Redux slices:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **Product Slice**
+
+* Fetch all products
+* Store product list
+* Loaded + loading states
+* Error handling
+
+### **Cart Slice**
+
+* Add to cart
+* Remove from cart
+* Track quantity
+* Prevent duplicates
+* Maintain cart total
+
+✔ Global store setup using Redux Toolkit.
+
+---
+
+# ✅ 4. Add to Cart Feature
+
+✔ On Product Details page:
+
+* Add to Cart button
+* Quantity selector (+/-)
+* If item already exists → show “Remove from Cart” button
+* Display existing quantity if already added
+
+✔ Cart Page includes:
+
+* List of all cart products
+* Price & quantity
+* Total cart amount
+* Remove item functionality
+
+---
+
+# ✅ 5. Clean & Consistent Styling
+
+✔ Used **Tailwind CSS** for modern, responsive UI.
+
+✔ Smooth animations for:
+
+* Product hover
+* Image zoom
+* Card hover shadows
+* Page transitions
+
+✔ Skeleton loaders for:
+
+* Product listing
+* Related products
+* Product details image loading
+
+---
+
+# ✅ 6. Clean Folder Structure
+
+```
+src/
+│
+├── components/
+│     ├── Header/
+│     ├── productlist/
+│     ├── cart/
+│
+├── pages/
+│     ├── Home/
+│     ├── ProductDetail/
+│     ├── Cart/
+│
+├── redux/
+│     ├── store.js
+│     ├── productSlice.js
+│     ├── cartSlice.js
+│
+├── routes/
+│     ├── MainRoutes.jsx
+│
+├── layouts/
+│     ├── Layout.jsx
+│
+└── App.js
+```
+
+✔ UI, business logic, state, and routes are **cleanly separated**.
+
+---
+
+# 🎁 Bonus Features Implemented
+
+✔ **Category-based related products**
+✔ **Loading skeleton for related products**
+✔ **Global caching of product list (no repeated API calls)**
+✔ **Reusable ProductCard component**
+✔ **Clean routing with Suspense + Lazy Loading**
+
+---
+
+# 🧪 Technologies Used
+
+| Tech          | Purpose      |
+| ------------- | ------------ |
+| React.js      | Frontend     |
+| Redux Toolkit | Global state |
+| React Router  | Navigation   |
+| Tailwind CSS  | UI styling   |
+| FakeStore API | Data source  |
+
+---
+
+# 🖼️ Screens & Functionality
+
+### **Home Page**
+
+* Displays product list
+* Shows loading skeleton initially
+
+### **Product Details Page**
+
+* Fetches product by ID
+* Shows full details
+* Quantity selector
+* Add/Remove from cart
+* Related products grid
+
+### **Cart Page**
+
+* List of all cart items
+* Qty + total price
+* Remove product
+
+---
+
+# 🚀 How to Run the Project
+
+```bash
+npm install
+npm start
+```
+
+---
+
+# 📦 API Endpoints Used
+
+| Feature       | Endpoint        |
+| ------------- | --------------- |
+| All Products  | `/products`     |
+| Product by ID | `/products/:id` |
+
+---
